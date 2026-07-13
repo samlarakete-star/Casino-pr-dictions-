@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Casino Prediction Pro</title>
+
+<style>
+
+body{
+    background:linear-gradient(180deg,#050505,#121212);
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    padding:25px 0;
+}
+
+
+h1{
+    color:#ffd700;
+    text-shadow:0 0 15px gold;
+}
+
+
+.card{
+    width:92%;
+    max-width:420px;
+    margin:auto;
+    background:#151515;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 0 30px rgba(0,102,255,0.5);
+}
+
+
+button{
+
+    width:100%;
+    padding:16px;
+    background:#0066ff;
+    color:white;
+    border:none;
+    border-radius:15px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+button:hover{
+    background:#008cff;
+}
+
+
+
+.grid{
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    margin-top:25px;
+
+}
+
+
+
+.case{
+
+    height:55px;
+    background:#0066ff;
+    border-radius:12px;
+    box-shadow:0 0 12px #0066ff;
+
+}
+
+
+
+.valid{
+
+    background:#00ff88;
+    box-shadow:0 0 20px #00ff88;
+
+}
+
+
+
+.cote{
+
+    color:#00ff88;
+    font-size:40px;
+    font-weight:bold;
+    text-shadow:0 0 15px #00ff88;
+
+}
+
+
+
+.info{
+
+    color:#aaa;
+    margin-top:15px;
+
+}
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<h1>🎰 CASINO PREDICTION PRO💵</h1>
+
+
+<div class="card">
+
+
+<p>🔥 PREDICTIONS // CLIS EN BAS 🤩💵 </p>
+
+     👇👇
+<button onclick="generer()">
+🚀 GÉNÉRER PRÉDICTION
+</button>
+
+
+
+<div id="grille" class="grid"></div>
+
+
+
+<div id="resultat"></div>
+
+
+<div id="heure" class="info"></div>
+
+
+
+</div>
+
+
+
+
+<script>
+
+
+function generer(){
+
+
+let cases = Array(25).fill(false);
+
+
+
+let nombre = 0;
+
+
+
+while(nombre < 4){
+
+let choix = Math.floor(Math.random()*25);
+
+
+if(cases[choix] === false){
+
+cases[choix] = true;
+
+nombre++;
+
+}
+
+}
+
+
+
+let affichage = "";
+
+
+
+for(let i=0;i<25;i++){
+
+
+if(cases[i]){
+
+affichage += "<div class='case valid'></div>";
+
+}
+
+else{
+
+affichage += "<div class='case'></div>";
+
+}
+
+
+}
+
+
+
+document.getElementById("grille").innerHTML = affichage;
+
+
+
+
+// Côte entre 1.60 et 2.00
+
+let listeCote = [
+"1.60",
+"1.70",
+"1.80",
+"1.90",
+"2.00"
+];
+
+
+let cote = listeCote[Math.floor(Math.random()*listeCote.length)];
+
+
+
+let maintenant = new Date();
+
+
+
+document.getElementById("resultat").innerHTML =
+
+"<br>✅ VALIDATIONS : 4"+
+"<br><br>🎯 CÔTE : <span class='cote'>"+cote+"x</span>";
+
+
+
+document.getElementById("heure").innerHTML =
+
+"⏰ Heure : "+maintenant.toLocaleTimeString()+
+"<br>📅 Date : "+maintenant.toLocaleDateString();
+
+
+}
+
+
+
+
+setInterval(()=>{
+
+
+let maintenant = new Date();
+
+
+document.getElementById("heure").innerHTML =
+
+"⏰ Heure actuelle : "+maintenant.toLocaleTimeString();
+
+
+},1000);
+
+
+
+</script>
+
+
+</body>
+</html>
